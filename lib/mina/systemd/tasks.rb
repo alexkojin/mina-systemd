@@ -1,7 +1,7 @@
 # Add tasks for managing systemd services.
 
 # Usage example:
-#   invoke :'systemctl:start[SERVICE-NAME]'
+#   invoke :'systemctl:start', 'SERVICE_NAME'
 
 namespace :systemctl do
   desc "Start a systemd service"

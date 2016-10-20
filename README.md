@@ -1,8 +1,6 @@
 # Mina::Systemd
+This is wrapper for `systemd` service manager for [mina](https://github.com/mina-deploy/mina)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mina/systemd`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -18,11 +16,32 @@ And then execute:
 
 ## Usage
 
-TODO: Write usage instructions here
+in `deploy.rb`
+
+```ruby
+require 'mina/systemd'
+
+task deploy: :environment do
+  deploy do
+    ...
+    on :launch do
+      invoke :'systemctl:restart', 'puma'
+    end
+  end
+end
+```
+
+Call it as mina task:
+
+`mina systemctl:stop['puma']`
+
+if you use zsh add noglob
+
+`noglob mina systemctl:status['puma']`
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mina-systemd. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/alexkojin/mina-systemd. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License
