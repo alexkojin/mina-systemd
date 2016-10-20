@@ -3,7 +3,7 @@
 # Usage example:
 #   invoke :'systemctl:start[SERVICE-NAME]'
 
-namespace :systemd do
+namespace :systemctl do
   desc "Start a systemd service"
   task :start, [:service] do |t, args|
     command %[sudo systemctl start #{args[:service]}]
